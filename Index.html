@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papas Lokas | Un sabor para cada antojo</title>
+<style>
+:root{--purple:#230039;--purple2:#4d0870;--red:#ff292d;--orange:#ff7816;--yellow:#ffd21f;--cream:#fff4df;--ink:#21072e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream)}
+header{position:sticky;top:12px;z-index:10;margin:12px auto 0;width:min(96%,1400px);padding:12px 22px;border-radius:60px;background:linear-gradient(100deg,#180026,#2c0047);color:white;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 8px 30px #18002635}
+.logo{font-weight:1000;font-size:clamp(1.1rem,2.5vw,2rem);line-height:.85;letter-spacing:-1px;color:var(--yellow);text-shadow:3px 3px 0 var(--red),5px 5px 0 #090012;transform:rotate(-4deg);white-space:nowrap}.logo span{display:block;color:var(--red)}
+nav{display:flex;gap:clamp(10px,2.8vw,38px);align-items:center}nav a{color:white;text-decoration:none;font-weight:650}nav a:hover{color:var(--yellow)}.cart{border:0;border-radius:30px;background:var(--yellow);font-weight:800;padding:10px 15px;cursor:pointer}
+.hero{position:relative;overflow:hidden;margin-top:-56px;padding:100px max(5vw,24px) 58px;background:radial-gradient(ellipse at 70% 45%,#600a86 0%,#350052 42%,#20002f 75%);color:white;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;min-height:475px}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;inset:auto -5% -50px;height:150px;background:linear-gradient(10deg,var(--yellow),var(--orange),var(--red));border-radius:50% 50% 0 0;transform:rotate(-2deg)}
+.hero:after{inset:-110px -5% auto;height:160px;background:linear-gradient(90deg,var(--red),var(--orange),var(--purple2));transform:rotate(-3deg)}
+.hero-copy,.mascot{position:relative;z-index:1}.hero h1{font-size:clamp(3rem,7vw,6.4rem);line-height:.82;margin:15px 0;text-transform:uppercase;font-weight:1000;letter-spacing:-.07em;color:var(--yellow);text-shadow:5px 5px 0 var(--red),9px 9px 0 #100019}.hero h1 span{display:block;color:var(--red)}.tagline{font-size:clamp(1.3rem,3vw,2rem);font-style:italic;font-weight:800;margin:22px 0 28px}.cta{display:inline-block;border:0;border-radius:40px;padding:15px 28px;background:var(--yellow);color:var(--purple);font-size:1.1rem;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #ff8518;cursor:pointer}.mascot{display:flex;justify-content:center;align-items:center;min-height:330px}.potato{font-size:clamp(9rem,20vw,17rem);filter:drop-shadow(8px 10px 0 #13001f);position:relative;transform:rotate(-8deg)}.potato:after{content:"😜";position:absolute;left:25%;top:31%;font-size:.35em;filter:none}.bag{position:absolute;right:5%;bottom:15%;font-size:clamp(3rem,7vw,6rem);transform:rotate(12deg);filter:drop-shadow(4px 5px 0 #15001f)}
+section{padding:38px max(4vw,18px)}.section-title{text-align:center;font-size:clamp(2rem,4vw,3.2rem);font-style:italic;margin:0 0 28px;color:var(--purple)}.flavors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;max-width:1300px;margin:auto}.flavor{background:#fffaf0;border-radius:22px;padding:18px 12px;text-align:center;box-shadow:0 6px 0 #ead9bf;transition:transform .18s}.flavor:hover{transform:translateY(-5px)}.chip{font-size:3rem;line-height:1.3;display:block;filter:drop-shadow(0 3px 0 #f1c68a)}.flavor h3{display:inline-block;background:var(--flavor,var(--red));color:white;border-radius:8px;padding:7px 10px;margin:8px 0;font-size:1rem}.flavor p{margin:3px 0 12px;font-weight:750}.flavor button{border:0;border-radius:24px;background:var(--purple);color:white;font-weight:800;padding:9px 14px;cursor:pointer}.flavor button:hover{background:var(--red)}
+.flavor .size-options{display:grid;grid-template-columns:1fr;gap:7px;margin-top:12px}
+.flavor .size-option{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:1px solid #e5d7ed;border-radius:12px;background:#fff;color:var(--purple);padding:9px 11px;font-weight:800;text-align:left;cursor:pointer}
+.flavor .size-option span{font-size:.78rem;color:#6c5678;font-weight:650}
+.flavor .size-option strong{white-space:nowrap;font-size:.9rem}
+.flavor .size-option:hover{background:var(--yellow);border-color:var(--orange);color:var(--purple)}
+
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1300px;margin:28px auto 10px;background:linear-gradient(100deg,#1d002b,#3c0054);color:white;border:3px solid var(--yellow);border-radius:35px;overflow:hidden}.perk{padding:20px 15px;text-align:center;border-right:1px solid #a82bb9}.perk:last-child{border:0}.perk b{display:block;color:var(--yellow);font-size:1.05rem;margin-bottom:5px}.about{text-align:center;max-width:850px;margin:auto;line-height:1.7}.contact{background:#260039;color:white;text-align:center}.contact h2{color:var(--yellow)}footer{background:#160021;color:#ddcbe6;text-align:center;padding:20px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#21002f;color:white;padding:13px 20px;border-radius:30px;box-shadow:0 5px 25px #0005;display:none;z-index:30}
+
+/* Carrusel de antojos relacionados */
+.related{background:linear-gradient(180deg,#fff4df,#ffe6bf);overflow:hidden}
+.bounce-title-wrap{overflow:hidden;max-width:1300px;margin:0 auto 28px}
+.bounce-title{width:max-content;max-width:none;margin:0;color:var(--red);font-size:clamp(1.8rem,4vw,3rem);font-weight:1000;font-style:italic;text-transform:uppercase;text-shadow:2px 3px 0 var(--yellow);animation:bounceSide 5s ease-in-out infinite alternate}
+@keyframes bounceSide{0%{transform:translateX(0)}100%{transform:translateX(min(35vw,420px))}}
+.carousel-shell{max-width:1300px;margin:auto;position:relative}
+.related-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px 4px 22px;scrollbar-width:thin;scrollbar-color:var(--orange) #ffe8c9}
+.related-card{flex:0 0 clamp(220px,28%,310px);scroll-snap-align:start;background:#fffaf0;border:2px solid #f5d5a5;border-radius:22px;overflow:hidden;box-shadow:0 7px 0 #ead9bf}
+.related-card img{display:block;width:100%;height:185px;object-fit:cover;background:#f6dcb7}
+.related-card .related-copy{padding:15px}
+.related-card h3{margin:0 0 7px;color:var(--purple);font-size:1.15rem}
+.related-card p{margin:0;line-height:1.5;font-size:.95rem}
+.carousel-controls{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:10px}
+.carousel-controls button{width:44px;height:44px;border:0;border-radius:50%;background:var(--purple);color:white;font-size:1.35rem;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #160021}
+.carousel-controls button:hover{background:var(--red)}
+.carousel-hint{color:#6c5678;font-size:.9rem;font-weight:700}
+@media(prefers-reduced-motion:reduce){.bounce-title{animation:none}.related-track{scroll-behavior:auto}}
+@media(max-width:520px){.related-card{flex-basis:78%}.related-card img{height:165px}.bounce-title{animation-duration:7s}}
+
+@media(max-width:850px){header{flex-wrap:wrap;justify-content:center;border-radius:28px}nav{order:3;width:100%;justify-content:center;flex-wrap:wrap} .hero{grid-template-columns:1fr;text-align:center;padding-top:110px}.mascot{min-height:220px}.potato{font-size:10rem}.bag{right:15%;bottom:8%}.flavors{grid-template-columns:repeat(3,minmax(0,1fr))}.perks{grid-template-columns:repeat(2,1fr)}.perk:nth-child(2){border-right:0}.perk:nth-child(-n+2){border-bottom:1px solid #a82bb9}}
+@media(max-width:520px){.flavors{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.flavor{padding:12px 7px}.chip{font-size:2.4rem}.perk{font-size:.9rem;padding:16px 8px}.hero h1{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#inicio" aria-label="Papas Lokas inicio">👑 PAPAS <span>LOKAS</span></a>
+  <nav aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#antojos">Antojos</a><a href="#nosotros">Nosotros</a><a href="#envios">Envíos</a><a href="#contacto">Contacto</a>
+  </nav>
+  <button class="cart" onclick="verCarrito()">🛒 <span id="count">0</span></button>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <h1>Papas <span>Lokas</span></h1>
+    <p class="tagline">¡Un sabor para<br>cada antojo!</p>
+    <a class="cta" href="#catalogo">Ver catálogo&nbsp; ➜</a>
+  </div>
+  <div class="mascot" aria-label="Mascota de papa picosita">
+    <div class="potato" role="img" aria-label="Papa feliz enchilada">🥔</div>
+    <div class="bag" role="img" aria-label="Bolsa de papas">🌶️🥔</div>
+  </div>
+</section>
+<section id="catalogo">
+  <h2 class="section-title">✦ Nuestros sabores ✦</h2>
+  <div class="flavors" id="flavors"></div>
+</section>
+
+<section class="related" id="antojos">
+  <div class="bounce-title-wrap">
+    <h2 class="bounce-title">¡Antojos que van y vienen! ✦</h2>
+  </div>
+  <div class="carousel-shell">
+    <div class="related-track" id="relatedTrack" aria-label="Carrusel de productos relacionados">
+      <article class="related-card">
+        <img src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=900&q=85" alt="Papas fritas crujientes" loading="lazy">
+        <div class="related-copy"><h3>Clásicas y crujientes</h3><p>La base perfecta para ponerles tu salsa y picante favorito.</p></div>
+      </article>
+      <article class="related-card">
+        <img src="https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=900&q=85" alt="Chiles rojos frescos" loading="lazy">
+        <div class="related-copy"><h3>Modo extra picante</h3><p>Para quienes aman el habanero y los sabores que enchilan rico.</p></div>
+      </article>
+      <article class="related-card">
+        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=900&q=85" alt="Papas preparadas para botanear" loading="lazy">
+        <div class="related-copy"><h3>Botana para compartir</h3><p>Arma tu combinación favorita para tardes de películas y reuniones.</p></div>
+      </article>
+      <article class="related-card">
+        <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=900&q=85" alt="Limones frescos" loading="lazy">
+        <div class="related-copy"><h3>Toque cítrico</h3><p>Limón y pimienta: un sabor fresco con el toque acidito ideal.</p></div>
+      </article>
+      <article class="related-card">
+        <img src="https://images.unsplash.com/photo-1548907040-4d42bfcf6f5b?auto=format&fit=crop&w=900&q=85" alt="Chocolate" loading="lazy">
+        <div class="related-copy"><h3>Dulce + picosito</h3><p>Descubre una mezcla diferente con chocolate y Flamin’ Hot.</p></div>
+      </article>
+    </div>
+    <div class="carousel-controls" aria-label="Controles del carrusel">
+      <button type="button" id="carouselPrev" aria-label="Ver productos anteriores">‹</button>
+      <span class="carousel-hint">Desliza para descubrir más antojos</span>
+      <button type="button" id="carouselNext" aria-label="Ver productos siguientes">›</button>
+    </div>
+  </div>
+</section>
+
+<section id="envios">
+  <div class="perks">
+    <div class="perk"><b>🛒 Compra fácil</b> y segura</div>
+    <div class="perk"><b>🚚 Envíos</b> consulta cobertura y costo</div>
+    <div class="perk"><b>🛵 Entrega</b> opciones por confirmar</div>
+    <div class="perk"><b>🔒 Tus datos</b> protegidos</div>
+  </div>
+</section>
+<section id="nosotros">
+  <h2 class="section-title">¿Qué hace lokas a nuestras papas?</h2>
+  <p class="about">En Papas Lokas tenemos sabores para todos los antojos: desde opciones picositas hasta combinaciones dulces y originales. Haz tu pedido en línea y elige tus favoritas. ¡Prepárate para darle sabor a tu día!</p>
+</section>
+<section class="contact" id="contacto">
+  <h2>¿Se te antojaron?</h2>
+  <p>Arma tu pedido y contáctanos para confirmar disponibilidad, precio y entrega.</p>
+  <button class="cta" onclick="hacerPedido()">Preparar mi pedido 💜</button>
+</section>
+</main>
+<footer>© <span id="year"></span> Papas Lokas · ¡Un sabor para cada antojo!</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const productos=[
+ {nombre:"Flamin’ Hot",emoji:"🌶️",color:"#ff292d"},
+ {nombre:"Habanero",emoji:"🔥",color:"#ff7816"},
+ {nombre:"Chocolate con Flamin’ Hot",emoji:"🍫",color:"#7d2692"},
+ {nombre:"Pepino con limón",emoji:"🥒",color:"#58a629"},
+ {nombre:"Cebolla",emoji:"🧅",color:"#b66cc7"},
+ {nombre:"Limón con pimienta",emoji:"🍋",color:"#f5c400"},
+ {nombre:"Queso",emoji:"🧀",color:"#ffb000"},
+ {nombre:"Adobada",emoji:"🌶️",color:"#ed3c1d"},
+ {nombre:"Carne seca",emoji:"🥔",color:"#783d26"}
+];
+
+// Precios por presentación: chica 60 g, mediana 85 g y grande 100 g.
+const tamanos=[
+ {nombre:"Chica",gramos:60,precio:55},
+ {nombre:"Mediana",gramos:85,precio:75},
+ {nombre:"Grande",gramos:100,precio:110}
+];
+const carrito=[];
+const root=document.getElementById("flavors");
+
+productos.forEach(p=>{
+  const el=document.createElement("article");
+  el.className="flavor";
+  el.style.setProperty("--flavor",p.color);
+  el.innerHTML=`
+    <span class="chip" aria-hidden="true">${p.emoji}</span>
+    <h3>${p.nombre}</h3>
+    <p>Elige tu tamaño:</p>
+    <div class="size-options">
+      ${tamanos.map(t=>`
+        <button class="size-option" type="button"
+          aria-label="Agregar ${p.nombre}, tamaño ${t.nombre}, ${t.gramos} gramos, $${t.precio} pesos">
+          <span>${t.nombre} · ${t.gramos} g</span>
+          <strong>$${t.precio}</strong>
+        </button>
+      `).join("")}
+    </div>`;
+  el.querySelectorAll(".size-option").forEach((button,index)=>{
+    button.addEventListener("click",()=>{
+      const t=tamanos[index];
+      carrito.push({...p,tamano:t.nombre,gramos:t.gramos,precio:t.precio});
+      document.getElementById("count").textContent=carrito.length;
+      aviso(`${p.nombre} ${t.nombre} (${t.gramos} g) agregado · $${t.precio}`);
+    });
+  });
+  root.appendChild(el);
+});
+
+function aviso(m){
+  const t=document.getElementById("toast");
+  t.textContent=m;
+  t.style.display="block";
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>t.style.display="none",2600);
+}
+
+function verCarrito(){
+  if(!carrito.length){
+    aviso("Tu carrito está vacío. ¡Elige un sabor y tamaño!");
+    return;
+  }
+  const resumen=carrito.reduce((a,p)=>{
+    const key=`${p.nombre} - ${p.tamano} (${p.gramos} g)`;
+    if(!a[key]) a[key]={cantidad:0,precio:p.precio};
+    a[key].cantidad++;
+    return a;
+  },{});
+  const texto=Object.entries(resumen).map(([nombre,item])=>
+    `${item.cantidad} × ${nombre} — $${item.precio*item.cantidad} MXN`
+  ).join("\\n");
+  const total=carrito.reduce((sum,p)=>sum+p.precio,0);
+  alert("TU PEDIDO PAPAS LOKAS\\n\\n"+texto+
+    `\\n\\nTotal: $${total} MXN`+
+    "\\n\\nEl envío se confirma antes de pagar.");
+}
+
+function hacerPedido(){
+  if(!carrito.length){
+    document.getElementById("catalogo").scrollIntoView();
+    aviso("Elige el sabor y tamaño para armar tu pedido.");
+    return;
+  }
+  verCarrito();
+}
+
+const relatedTrack=document.getElementById("relatedTrack");
+document.getElementById("carouselPrev").addEventListener("click",()=>{
+  relatedTrack.scrollBy({left:-Math.max(240,relatedTrack.clientWidth*0.75),behavior:"smooth"});
+});
+document.getElementById("carouselNext").addEventListener("click",()=>{
+  relatedTrack.scrollBy({left:Math.max(240,relatedTrack.clientWidth*0.75),behavior:"smooth"});
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
